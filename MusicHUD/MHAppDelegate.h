@@ -1,5 +1,5 @@
 //
-//  main.m
+//  MHAppDelegate.h
 //  MusicHUD
 //
 //  Created by Katherine Whitlock on 5/28/13.
@@ -8,7 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-int main(int argc, char *argv[])
-{
-    return NSApplicationMain(argc, (const char **)argv);
-}
+@interface MHAppDelegate : NSObject <NSApplicationDelegate>
+
+@property (assign) IBOutlet NSWindow *window;
+
+@end
