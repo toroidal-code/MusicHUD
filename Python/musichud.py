@@ -6,9 +6,10 @@ from PySide.QtGui import *
 from copy import deepcopy
 
 
-filename = "album.jpg"
+filename = "album.png"
 
 cherrypy.config.update({'server.thread_pool': 0})
+
 
 class Style:
     '''Style constants'''
@@ -24,6 +25,7 @@ class Style:
     body_font = QFont("Segoe UI", body_text_size, 10)
     ui_text_color = Qt.white
     background_style = "background-color: rgba(26,26,26)"
+
 
 class UpdateThread(QThread):
     slots = 'data'
@@ -44,8 +46,9 @@ class UpdateThread(QThread):
 
 thread = UpdateThread()
 
+
 class MetroView(QGraphicsView):
-    slots = ('album', 'title', 'artist', 'albumart','data')
+    slots = ('album', 'title', 'artist', 'albumart', 'data')
 
     def __init__(self, scene, parent=None):
         super(MetroView, self).__init__(scene, parent)
@@ -57,7 +60,7 @@ class MetroView(QGraphicsView):
     def initUI(self):
         # set blackish background
 
-        self.albumart = QPixmap(filename).scaledToHeight(QDesktopWidget().availableGeometry().height())
+        self.albumart = QPixmap(filename).scaledToWidth(self.scene().sceneRect().width())
         self.setWindowFlags(Qt.FramelessWindowHint)
 
         self.title = QGraphicsTextItem()
@@ -77,7 +80,7 @@ class MetroView(QGraphicsView):
         self.scene().addItem(self.album)
 
     def updateImage(self):
-        self.albumart = QPixmap(filename).scaledToHeight(QDesktopWidget().availableGeometry().height())
+        self.albumart = QPixmap(filename).scaledToWidth(self.scene().sceneRect().width())
 
     def updateArtistAlbum(self, artist, album):
         self.album.setPlainText("%s - %s" % (artist, album))
@@ -98,7 +101,7 @@ class MetroView(QGraphicsView):
         self.repaint()
 
 app = QApplication(sys.argv)
-view_rect = QRect(100, 100, 1366, 768)
+view_rect = QRect(100, 100, 600, 600)
 
 scene = QGraphicsScene()
 scene.setSceneRect(0.0, 0.0, view_rect.width(), view_rect.height())
@@ -108,7 +111,8 @@ view.show()
 
 
 class MusicHUD(object):
-    def index(self, title, album, artist, albumArt):
+    def index(self, title, album, artist, albumArt=None):
+        global filename
         print threading.current_thread()
         out = """<html>
         <body>
@@ -121,16 +125,22 @@ class MusicHUD(object):
         </body>
         </html>"""
 
-        filename = 'album.' + albumArt.filename.split('.')[-1]
-        savedFile = open(filename, 'wb')
-        print('writing file: ' + albumArt.filename)
-        savedFile.write(albumArt.file.read())
-        savedFile.close()
+        if (albumArt):
+            filename = 'album.' + albumArt.filename.split('.')[-1]
+            savedFile = open(filename, 'wb')
+            print('writing file: ' + albumArt.filename)
+            savedFile.write(albumArt.file.read())
+            savedFile.close()
+            out %= (title, album, artist, albumArt.filename,
+                    albumArt.content_type, filename)
+        else:
+            out %= (title, album, artist, "none",
+                      "none", filename)
         thread.set_data({'title': title,
                          'artist': artist,
                          'album': album})
-        return out % (title, album, artist, albumArt.filename,
-                      albumArt.content_type, filename)
+        print out
+        return out
     index.exposed = True
 
 cherrypy.tree.mount(MusicHUD())

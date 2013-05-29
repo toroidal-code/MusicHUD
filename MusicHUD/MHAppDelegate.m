@@ -14,7 +14,6 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     MHListener* backend = [[MHListener alloc] initWithApp:[SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"]];
-    NSLog(@"%@",[[backend getCurrentTrack] name]);
 }
 
 @end

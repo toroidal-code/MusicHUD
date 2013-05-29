@@ -12,7 +12,6 @@
 		C99F274817559B8B00720C95 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F274717559B8B00720C95 /* main.m */; };
 		C99F274C17559B8B00720C95 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = C99F274A17559B8B00720C95 /* Credits.rtf */; };
 		C99F274F17559B8B00720C95 /* MHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F274E17559B8B00720C95 /* MHAppDelegate.m */; };
-		C99F275217559B8B00720C95 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C99F275017559B8B00720C95 /* MainMenu.xib */; };
 		C99F275617559B9500720C95 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99F273117558F9700720C95 /* ScriptingBridge.framework */; };
 		C99F275717559C9200720C95 /* MHListener.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F2734175590BD00720C95 /* MHListener.m */; };
 /* End PBXBuildFile section */
@@ -35,7 +34,6 @@
 		C99F274B17559B8B00720C95 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		C99F274D17559B8B00720C95 /* MHAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MHAppDelegate.h; sourceTree = "<group>"; };
 		C99F274E17559B8B00720C95 /* MHAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MHAppDelegate.m; sourceTree = "<group>"; };
-		C99F275117559B8B00720C95 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +95,6 @@
 				C99F2734175590BD00720C95 /* MHListener.m */,
 				C99F274D17559B8B00720C95 /* MHAppDelegate.h */,
 				C99F274E17559B8B00720C95 /* MHAppDelegate.m */,
-				C99F275017559B8B00720C95 /* MainMenu.xib */,
 				C99F274217559B8B00720C95 /* Supporting Files */,
 			);
 			path = MusicHUD;
@@ -168,7 +165,6 @@
 			files = (
 				C99F274617559B8B00720C95 /* InfoPlist.strings in Resources */,
 				C99F274C17559B8B00720C95 /* Credits.rtf in Resources */,
-				C99F275217559B8B00720C95 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,14 +198,6 @@
 				C99F274B17559B8B00720C95 /* en */,
 			);
 			name = Credits.rtf;
-			sourceTree = "<group>";
-		};
-		C99F275017559B8B00720C95 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C99F275117559B8B00720C95 /* en */,
-			);
-			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

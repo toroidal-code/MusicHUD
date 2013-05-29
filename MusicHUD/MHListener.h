@@ -10,10 +10,15 @@
 #import "iTunes.h"
 
 @interface MHListener : NSObject{
-    iTunesApplication* app;
+    iTunesApplication* _app;
+    NSString* _lastTitle;
+    NSString* _lastAlbum;
 }
 - (id)initWithApp:(iTunesApplication*) inputApp;
 - (iTunesTrack*)getCurrentTrack;
 - (void) updateTrackInfo:(NSNotification *)notification;
+@property (nonatomic, retain) iTunesApplication* app;
+@property (nonatomic, retain) NSString* lastTitle;
+@property (nonatomic, retain) NSString* lastAlbum;
 @end
 
