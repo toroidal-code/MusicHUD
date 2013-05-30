@@ -8,24 +8,21 @@ from copy import deepcopy
 
 filename = "album.png"
 
-cherrypy.config.update({'server.thread_pool': 0})
+#cherrypy.config.update({'server.thread_pool': 0})
 
 
 class Style:
     '''Style constants'''
 
-    # margin for all ui components
-    component_margin = 24
-
-    body_text_size = 36
-    header_text_size = 72
-
     # ui fonts and color
-    header_font = QFont("Segoe UI", header_text_size, 10)
-    body_font = QFont("Segoe UI", body_text_size, 10)
     ui_text_color = '#F8F8F8'
-    background_style = "background-color: rgba(26,26,26)"
+    background_color = QColor(25, 25, 25, 213)
 
+    def title_font(self, sceneHeight):
+        return QFont("Segoe UI", sceneHeight * .08, 10)
+
+    def body_font(self, sceneHeight):
+        return QFont("Segoe UI", sceneHeight * .045, 10)
 
 class Server(object):
     def index(self, title, album, artist, albumArt=None):
@@ -96,18 +93,18 @@ class MetroView(QGraphicsView):
 
         self.title = QGraphicsTextItem()
         self.title.setAcceptHoverEvents(False)
-        self.title.setFont(Style.header_font)
+        self.title.setFont(Style().title_font(self.scene().sceneRect().height()))
         self.title.setPlainText("It's Alright")
         self.title.setDefaultTextColor(Style.ui_text_color)
-        self.title.setPos(20, self.scene().sceneRect().height() - 185)
+        self.title.setPos(20, self.scene().sceneRect().height() - self.scene().sceneRect().height() * .20)
         self.scene().addItem(self.title)
 
         self.album = QGraphicsTextItem()
         self.album.setAcceptHoverEvents(False)
-        self.album.setFont(Style.body_font)
+        self.album.setFont(Style().body_font(self.scene().sceneRect().height()))
         self.album.setPlainText("%s - %s" % ('Matt and Kim', 'Lightning'))
         self.album.setDefaultTextColor(Style.ui_text_color)
-        self.album.setPos(20, self.scene().sceneRect().height() - 80)
+        self.album.setPos(20, self.scene().sceneRect().height() - self.scene().sceneRect().height() * .09)
         self.scene().addItem(self.album)
 
     def updateImage(self):
@@ -125,11 +122,11 @@ class MetroView(QGraphicsView):
     def paintEvent(self, event):
         painter = QPainter(self)
         painter.drawTiledPixmap(self.rect(), self.albumart)
-        painter.setBrush(QColor('#252525'))
-        painter.setPen(QPen(QColor('#252525'), 0, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
-        painter.fillRect(QRect(0, self.scene().sceneRect().height() - 185,
+        painter.setBrush(Style.background_color)
+        painter.setPen(QPen(Style.background_color, 0, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
+        painter.fillRect(QRect(0, self.scene().sceneRect().height() - self.scene().sceneRect().height() * .20,
                                self.scene().sceneRect().width(),
-                               self.scene().sceneRect().height()), QColor(25, 25, 25, 213))
+                               self.scene().sceneRect().height()), Style.background_color)
         super(MetroView, self).paintEvent(event)
 
     def update(self):
@@ -140,7 +137,7 @@ class MetroView(QGraphicsView):
         self.repaint()
 
 app = QApplication(sys.argv)
-view_rect = QRect(100, 100, 900, 900)
+view_rect = QRect(100, 100, 600, 600)
 
 scene = QGraphicsScene()
 scene.setSceneRect(0.0, 0.0, view_rect.width(), view_rect.height())
