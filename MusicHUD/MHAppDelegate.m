@@ -7,13 +7,15 @@
 //
 
 #import "MHAppDelegate.h"
-#import "MHListener.h"
+#import "MHiTunesListener.h"
+#import "MHSonoraListener.h"
 
 @implementation MHAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    MHListener* backend = [[MHListener alloc] initWithApp:[SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"]];
+    MHiTunesListener * iTunesListener = [[MHiTunesListener alloc] init];
+    MHSonoraListener * sonoraListener = [[MHSonoraListener alloc] init];
 }
 
 @end

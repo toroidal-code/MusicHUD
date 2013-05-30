@@ -7,21 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7BEE03E0EB5EC3C0C9BBBC87 /* MHRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BEE065AFE65095DD226ADEE /* MHRequest.m */; };
+		7BEE0A48AD8DF58C24A6C0AE /* MHSonoraListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BEE016A29F25279C3A17FB9 /* MHSonoraListener.m */; };
 		C99F273C17559B8B00720C95 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99F273B17559B8B00720C95 /* Cocoa.framework */; };
 		C99F274617559B8B00720C95 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C99F274417559B8B00720C95 /* InfoPlist.strings */; };
 		C99F274817559B8B00720C95 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F274717559B8B00720C95 /* main.m */; };
 		C99F274C17559B8B00720C95 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = C99F274A17559B8B00720C95 /* Credits.rtf */; };
 		C99F274F17559B8B00720C95 /* MHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F274E17559B8B00720C95 /* MHAppDelegate.m */; };
 		C99F275617559B9500720C95 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99F273117558F9700720C95 /* ScriptingBridge.framework */; };
-		C99F275717559C9200720C95 /* MHListener.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F2734175590BD00720C95 /* MHListener.m */; };
+		C99F275717559C9200720C95 /* MHiTunesListener.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F2734175590BD00720C95 /* MHiTunesListener.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7BEE016A29F25279C3A17FB9 /* MHSonoraListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHSonoraListener.m; sourceTree = "<group>"; };
+		7BEE04F3C9BFF1DB965E6943 /* MHSonoraListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHSonoraListener.h; sourceTree = "<group>"; };
+		7BEE065AFE65095DD226ADEE /* MHRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHRequest.m; sourceTree = "<group>"; };
+		7BEE0A8C3CCFEC988AF2F55B /* MHRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHRequest.h; sourceTree = "<group>"; };
 		C99F272117558E6A00720C95 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C99F273017558E9B00720C95 /* iTunes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iTunes.h; sourceTree = "<group>"; };
 		C99F273117558F9700720C95 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
-		C99F2733175590BD00720C95 /* MHListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHListener.h; sourceTree = "<group>"; };
-		C99F2734175590BD00720C95 /* MHListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHListener.m; sourceTree = "<group>"; };
+		C99F2733175590BD00720C95 /* MHiTunesListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHiTunesListener.h; sourceTree = "<group>"; };
+		C99F2734175590BD00720C95 /* MHiTunesListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHiTunesListener.m; sourceTree = "<group>"; };
 		C99F273A17559B8B00720C95 /* MusicHUD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicHUD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C99F273B17559B8B00720C95 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		C99F273E17559B8B00720C95 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -34,6 +40,7 @@
 		C99F274B17559B8B00720C95 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		C99F274D17559B8B00720C95 /* MHAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MHAppDelegate.h; sourceTree = "<group>"; };
 		C99F274E17559B8B00720C95 /* MHAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MHAppDelegate.m; sourceTree = "<group>"; };
+		C9BBCF481756BDF7007CFEED /* Sonora.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sonora.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,12 +97,17 @@
 		C99F274117559B8B00720C95 /* MusicHUD */ = {
 			isa = PBXGroup;
 			children = (
+				C9BBCF481756BDF7007CFEED /* Sonora.h */,
 				C99F273017558E9B00720C95 /* iTunes.h */,
-				C99F2733175590BD00720C95 /* MHListener.h */,
-				C99F2734175590BD00720C95 /* MHListener.m */,
+				C99F2733175590BD00720C95 /* MHiTunesListener.h */,
+				C99F2734175590BD00720C95 /* MHiTunesListener.m */,
 				C99F274D17559B8B00720C95 /* MHAppDelegate.h */,
 				C99F274E17559B8B00720C95 /* MHAppDelegate.m */,
 				C99F274217559B8B00720C95 /* Supporting Files */,
+				7BEE016A29F25279C3A17FB9 /* MHSonoraListener.m */,
+				7BEE04F3C9BFF1DB965E6943 /* MHSonoraListener.h */,
+				7BEE065AFE65095DD226ADEE /* MHRequest.m */,
+				7BEE0A8C3CCFEC988AF2F55B /* MHRequest.h */,
 			);
 			path = MusicHUD;
 			sourceTree = "<group>";
@@ -175,9 +187,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C99F275717559C9200720C95 /* MHListener.m in Sources */,
+				C99F275717559C9200720C95 /* MHiTunesListener.m in Sources */,
 				C99F274817559B8B00720C95 /* main.m in Sources */,
 				C99F274F17559B8B00720C95 /* MHAppDelegate.m in Sources */,
+				7BEE0A48AD8DF58C24A6C0AE /* MHSonoraListener.m in Sources */,
+				7BEE03E0EB5EC3C0C9BBBC87 /* MHRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +319,7 @@
 				C99F275517559B8B00720C95 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,5 +1,5 @@
 //
-//  MHListener.h
+//  MHiTunesListener.h
 //  MusicHUD
 //
 //  Created by Katherine Whitlock on 5/28/13.
@@ -9,12 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "iTunes.h"
 
-@interface MHListener : NSObject{
+@interface MHiTunesListener : NSObject{
     iTunesApplication* _app;
     NSString* _lastTitle;
     NSString* _lastAlbum;
 }
-- (id)initWithApp:(iTunesApplication*) inputApp;
 - (iTunesTrack*)getCurrentTrack;
 - (void) updateTrackInfo:(NSNotification *)notification;
 @property (nonatomic, retain) iTunesApplication* app;
