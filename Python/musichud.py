@@ -27,8 +27,42 @@ class Style:
     background_style = "background-color: rgba(26,26,26)"
 
 
-class UpdateThread(QThread):
-    slots = 'data'
+class Server(object):
+    def index(self, title, album, artist, albumArt=None):
+        global filename
+        global view
+        out = """<html>
+        <body>
+            Title: %s<br />
+            Album: %s<br />
+            Artist: %s<br />
+            albumArt filename: %s<br />
+            albumArt mime-type: %s<br />
+            temp filename: %s
+        </body>
+        </html>"""
+
+        if (albumArt):
+            filename = 'album.' + albumArt.filename.split('.')[-1]
+            savedFile = open(filename, 'wb')
+            print('writing file: ' + albumArt.filename)
+            savedFile.write(albumArt.file.read())
+            savedFile.close()
+            out %= (title, album, artist, albumArt.filename,
+                    albumArt.content_type, filename)
+        else:
+            out %= (title, album, artist, "none",
+                    "none", filename)
+        view.thread.set_data({'title': title,
+                              'artist': artist,
+                              'album': album})
+        view.thread.emit(SIGNAL("dataReady()"))
+        print out
+        return out
+    index.exposed = True
+
+
+class MainThread(QThread):
 
     def get_data(self):
         QMutexLocker(self.mutex)
@@ -37,21 +71,19 @@ class UpdateThread(QThread):
     def set_data(self, data):
         QMutexLocker(self.mutex)
         self.data = deepcopy(data)
-        self.emit(SIGNAL("dataReady()"))
 
     def run(self):
         self.mutex = QMutex()
-        while True:
-            data = {}
+        cherrypy.tree.mount(Server())
+        cherrypy.engine.start()
 
-thread = UpdateThread()
 
 class MetroView(QGraphicsView):
     slots = ('album', 'title', 'artist', 'albumart', 'data')
 
     def __init__(self, scene, parent=None):
         super(MetroView, self).__init__(scene, parent)
-        self.thread = thread
+        self.thread = MainThread()
         self.connect(self.thread, SIGNAL("dataReady()"), self.update)
         self.thread.start()
         self.initUI()
@@ -116,40 +148,6 @@ view = MetroView(scene)
 view.setGeometry(view_rect)
 view.show()  # FullScreen()
 
-
-class MusicHUD(object):
-    def index(self, title, album, artist, albumArt=None):
-        global filename
-        print threading.current_thread()
-        out = """<html>
-        <body>
-            Title: %s<br />
-            Album: %s<br />
-            Artist: %s<br />
-            albumArt filename: %s<br />
-            albumArt mime-type: %s<br />
-            temp filename: %s
-        </body>
-        </html>"""
-
-        if (albumArt):
-            filename = 'album.' + albumArt.filename.split('.')[-1]
-            savedFile = open(filename, 'wb')
-            print('writing file: ' + albumArt.filename)
-            savedFile.write(albumArt.file.read())
-            savedFile.close()
-            out %= (title, album, artist, albumArt.filename,
-                    albumArt.content_type, filename)
-        else:
-            out %= (title, album, artist, "none",
-                    "none", filename)
-        thread.set_data({'title': title,
-                         'artist': artist,
-                         'album': album})
-        print out
-        return out
-    index.exposed = True
-
-cherrypy.tree.mount(MusicHUD())
-cherrypy.engine.start()
 app.exec_()
+
+
