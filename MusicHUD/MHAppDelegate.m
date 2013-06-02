@@ -7,15 +7,61 @@
 //
 
 #import "MHAppDelegate.h"
-#import "MHiTunesListener.h"
-#import "MHSonoraListener.h"
+
 
 @implementation MHAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    MHiTunesListener * iTunesListener = [[MHiTunesListener alloc] init];
-    MHSonoraListener * sonoraListener = [[MHSonoraListener alloc] init];
+//    MHiTunesListener * iTunesListener = [[MHiTunesListener alloc] init];
+//    MHSpotifyListener * spotifyListener = [[MHSpotifyListener  alloc] init];
+//    MHSonoraListener * sonoraListener = [[MHSonoraListener alloc] init];
+    NSNotificationCenter* notificationCenter = [[NSWorkspace sharedWorkspace] notificationCenter];
+    [notificationCenter addObserver:self
+                           selector:@selector(applicationDidTerminate:)
+                               name:@"NSWorkspaceDidTerminateApplicationNotification"
+                             object:nil];
+    [notificationCenter addObserver:self
+                           selector:@selector(applicationDidTerminate:)
+                               name:@"NSWorkspaceDidLaunchApplicationNotification"
+                             object:nil];
+    [self checkRunning];
+}
+
+- (void)checkRunning{
+    if ([NSRunningApplication runningApplicationsWithBundleIdentifier:@"com.spotify.client"].count > 0){
+        [self setSpotifyListener:[[MHSpotifyListener  alloc] init]];
+    }
+    if ([NSRunningApplication runningApplicationsWithBundleIdentifier:@"com.apple.iTunes"].count > 0){
+        [self setITunesListener:[[MHiTunesListener  alloc] init]];
+    }
+    if ([NSRunningApplication runningApplicationsWithBundleIdentifier:@"com.iktm.Sonora"].count > 0){
+        [self setSonoraListener:[[MHSonoraListener  alloc] init]];
+    }
+
+}
+
+- (void) applicationDidTerminate:(NSNotification*)notification
+{
+    NSDictionary *information = [notification userInfo];
+    if ([information[@"NSApplicationBundleIdentifier"] isEqualToString:@"com.spotify.client"])
+        [_spotifyListener dealloc];
+    else if ([information[@"NSApplicationBundleIdentifier"] isEqualToString:@"com.apple.iTunes"])
+        [_iTunesListener dealloc];
+    else if ([information[@"NSApplicationBundleIdentifier"] isEqualToString:@"com.iktm.sonora"])
+        [_sonoraListener dealloc];
+}
+
+
+- (void) applicationDidLaunch:(NSNotification*)notification
+{
+    NSDictionary *information = [notification userInfo];
+    if ([information[@"NSApplicationBundleIdentifier"] isEqualToString:@"com.spotify.client"])
+        [self setSpotifyListener:[[MHSpotifyListener  alloc] init]];
+    else if ([information[@"NSApplicationBundleIdentifier"] isEqualToString:@"com.apple.iTunes"])
+        [self setITunesListener:[[MHiTunesListener  alloc] init]];
+    else if ([information[@"NSApplicationBundleIdentifier"] isEqualToString:@"com.iktm.sonora"])
+        [self setSonoraListener:[[MHSonoraListener  alloc] init]];
 }
 
 @end

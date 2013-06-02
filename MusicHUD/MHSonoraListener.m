@@ -19,9 +19,8 @@
                                                             selector:@selector(updateTrackInfo:)
                                                                 name:@"com.iktm.Sonora.trackChanged"
                                                               object:nil];
-        self.lastAlbum = [NSString stringWithString:_app.album];
-        self.lastTitle = [NSString stringWithString:_app.track];
-        [self sendRequest:true];
+        self.lastAlbum = _app.album ? [NSString stringWithString:_app.album] : @"None";
+        self.lastTitle = _app.track ? [NSString stringWithString:_app.track] : @"None";
     }
     return self;
 }
