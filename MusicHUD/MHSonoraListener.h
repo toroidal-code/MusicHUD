@@ -15,8 +15,8 @@
     NSString * _lastAlbum;
 }
 - (void) updateTrackInfo:(NSNotification *)notification;
-@property (nonatomic, retain) SonoraApplication * app;
-@property (nonatomic, retain) NSString * lastTitle;
-@property (nonatomic, retain) NSString * lastAlbum;
+@property (nonatomic, strong) SonoraApplication * app;
+@property (nonatomic, strong) NSString * lastTitle;
+@property (nonatomic, strong) NSString * lastAlbum;
 
 @end

@@ -12,7 +12,7 @@
 @implementation MHAppDelegate
 
 -(void)awakeFromNib{
-    statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
+    statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     [statusItem setMenu:_statusMenu];
     [statusItem setTitle:@"mh"];
     [statusItem setHighlightMode:YES];
@@ -49,11 +49,11 @@
 {
     NSDictionary *information = [notification userInfo];
     if ([information[@"NSApplicationBundleIdentifier"] isEqualToString:@"com.spotify.client"])
-        [_spotifyListener dealloc];
+        ;
     else if ([information[@"NSApplicationBundleIdentifier"] isEqualToString:@"com.apple.iTunes"])
-        [_iTunesListener dealloc];
+        ;
     else if ([information[@"NSApplicationBundleIdentifier"] isEqualToString:@"com.iktm.sonora"])
-        [_sonoraListener dealloc];
+        ;
 }
 
 

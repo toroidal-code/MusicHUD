@@ -18,6 +18,9 @@
 		C99F275617559B9500720C95 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99F273117558F9700720C95 /* ScriptingBridge.framework */; };
 		C99F275717559C9200720C95 /* MHiTunesListener.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F2734175590BD00720C95 /* MHiTunesListener.m */; };
 		C9E1BCAE175C507C0004E4D6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9E1BCAD175C507C0004E4D6 /* MainMenu.xib */; };
+		C9E1BCB3175C5A3C0004E4D6 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9E1BCB2175C5A3C0004E4D6 /* Preferences.xib */; };
+		C9E1BCB6175C5B940004E4D6 /* MHPrefsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E1BCB5175C5B940004E4D6 /* MHPrefsController.m */; };
+		C9E1BCB9175C5D450004E4D6 /* MHAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E1BCB8175C5D450004E4D6 /* MHAppController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +50,11 @@
 		C99F274E17559B8B00720C95 /* MHAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MHAppDelegate.m; sourceTree = "<group>"; };
 		C9BBCF481756BDF7007CFEED /* Sonora.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sonora.h; sourceTree = "<group>"; };
 		C9E1BCAD175C507C0004E4D6 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = MusicHUD/MainMenu.xib; sourceTree = SOURCE_ROOT; };
+		C9E1BCB2175C5A3C0004E4D6 /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
+		C9E1BCB4175C5B940004E4D6 /* MHPrefsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHPrefsController.h; sourceTree = "<group>"; };
+		C9E1BCB5175C5B940004E4D6 /* MHPrefsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHPrefsController.m; sourceTree = "<group>"; };
+		C9E1BCB7175C5D450004E4D6 /* MHAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHAppController.h; sourceTree = "<group>"; };
+		C9E1BCB8175C5D450004E4D6 /* MHAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHAppController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +119,11 @@
 				C99F2734175590BD00720C95 /* MHiTunesListener.m */,
 				C99F274D17559B8B00720C95 /* MHAppDelegate.h */,
 				C99F274E17559B8B00720C95 /* MHAppDelegate.m */,
+				C9E1BCB2175C5A3C0004E4D6 /* Preferences.xib */,
+				C9E1BCB7175C5D450004E4D6 /* MHAppController.h */,
+				C9E1BCB8175C5D450004E4D6 /* MHAppController.m */,
+				C9E1BCB4175C5B940004E4D6 /* MHPrefsController.h */,
+				C9E1BCB5175C5B940004E4D6 /* MHPrefsController.m */,
 				C99F274217559B8B00720C95 /* Supporting Files */,
 				7BEE016A29F25279C3A17FB9 /* MHSonoraListener.m */,
 				7BEE04F3C9BFF1DB965E6943 /* MHSonoraListener.h */,
@@ -188,6 +201,7 @@
 				C99F274617559B8B00720C95 /* InfoPlist.strings in Resources */,
 				C99F274C17559B8B00720C95 /* Credits.rtf in Resources */,
 				C9E1BCAE175C507C0004E4D6 /* MainMenu.xib in Resources */,
+				C9E1BCB3175C5A3C0004E4D6 /* Preferences.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +218,8 @@
 				7BEE0A48AD8DF58C24A6C0AE /* MHSonoraListener.m in Sources */,
 				7BEE03E0EB5EC3C0C9BBBC87 /* MHRequest.m in Sources */,
 				C942C50217594741004C438E /* MHSpotifyListener.m in Sources */,
+				C9E1BCB6175C5B940004E4D6 /* MHPrefsController.m in Sources */,
+				C9E1BCB9175C5D450004E4D6 /* MHAppController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +307,7 @@
 		C99F275417559B8B00720C95 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MusicHUD/MusicHUD-Prefix.pch";
@@ -303,6 +320,7 @@
 		C99F275517559B8B00720C95 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MusicHUD/MusicHUD-Prefix.pch";

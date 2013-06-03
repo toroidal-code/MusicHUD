@@ -16,8 +16,8 @@
 }
 - (iTunesTrack*)getCurrentTrack;
 - (void) updateTrackInfo:(NSNotification *)notification;
-@property (nonatomic, retain) iTunesApplication* app;
-@property (nonatomic, retain) NSString* lastTitle;
-@property (nonatomic, retain) NSString* lastAlbum;
+@property (nonatomic, strong) iTunesApplication* app;
+@property (nonatomic, strong) NSString* lastTitle;
+@property (nonatomic, strong) NSString* lastAlbum;
 @end
 

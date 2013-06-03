@@ -31,8 +31,8 @@
 }
 
 - (void) updateTrackInfo:(NSNotification *)notification {
-    NSDictionary *information = [notification userInfo];
-    NSLog(@"track information: %@", information);
+    //NSDictionary *information = [notification userInfo];
+    //NSLog(@"track information: %@", information);
     SpotifyTrack *current = [self getCurrentTrack];
     if (![_lastTitle isEqualToString:current.name]){
         if (![_lastAlbum isEqualToString:current.album]){

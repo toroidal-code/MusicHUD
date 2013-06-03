@@ -18,8 +18,4 @@
     [self.preferencesController showWindow:self];
 }
 
-- (void)dealloc {
-    [preferencesController release];
-    [super dealloc];
-}
 @end

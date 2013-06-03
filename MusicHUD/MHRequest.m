@@ -67,7 +67,6 @@
     [request setHTTPBody:body];
     [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil ];
 
-    [request release];
 }
 
 

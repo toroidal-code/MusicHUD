@@ -11,6 +11,6 @@
 
 @interface MHAppController : NSObject
 
-@property (retain) MHPrefsController *preferencesController;
+@property (strong) MHPrefsController *preferencesController;
 -(IBAction)showPreferences:(id)sender; 
 @end
