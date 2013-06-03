@@ -12,11 +12,11 @@ The system works by creating a webserver on a simplistic device, and then allowi
 based on the new data. QT is used for the GUI, and CherryPy for the server.
 
 ##Programs
-Currently, MusicHUD supports iTunes and Sonora with more to come. 
+Currently, MusicHUD supports iTunes, Sonora, and Spotify with more to come.
 
 ##Running
 Simply call `python2 musichud.py` on your display system. You can then POST information to it using anything, for example cURL.
-Currently, there is a Cocoa application that interfaces with iTunes and Sonora using ScriptingBridge, and send the proper request
+Currently, there is a Cocoa application that interfaces with the music players using ScriptingBridge, and send the proper request
 on song change. Feel free to fork and write your own push program.
 
 ##Licensing
