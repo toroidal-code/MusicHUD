@@ -11,11 +11,15 @@
 
 @implementation MHAppDelegate
 
+-(void)awakeFromNib{
+    statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
+    [statusItem setMenu:_statusMenu];
+    [statusItem setTitle:@"mh"];
+    [statusItem setHighlightMode:YES];
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-//    MHiTunesListener * iTunesListener = [[MHiTunesListener alloc] init];
-//    MHSpotifyListener * spotifyListener = [[MHSpotifyListener  alloc] init];
-//    MHSonoraListener * sonoraListener = [[MHSonoraListener alloc] init];
     NSNotificationCenter* notificationCenter = [[NSWorkspace sharedWorkspace] notificationCenter];
     [notificationCenter addObserver:self
                            selector:@selector(applicationDidTerminate:)

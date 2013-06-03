@@ -17,6 +17,7 @@
 		C99F274F17559B8B00720C95 /* MHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F274E17559B8B00720C95 /* MHAppDelegate.m */; };
 		C99F275617559B9500720C95 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99F273117558F9700720C95 /* ScriptingBridge.framework */; };
 		C99F275717559C9200720C95 /* MHiTunesListener.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F2734175590BD00720C95 /* MHiTunesListener.m */; };
+		C9E1BCAE175C507C0004E4D6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9E1BCAD175C507C0004E4D6 /* MainMenu.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		C99F274D17559B8B00720C95 /* MHAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MHAppDelegate.h; sourceTree = "<group>"; };
 		C99F274E17559B8B00720C95 /* MHAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MHAppDelegate.m; sourceTree = "<group>"; };
 		C9BBCF481756BDF7007CFEED /* Sonora.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sonora.h; sourceTree = "<group>"; };
+		C9E1BCAD175C507C0004E4D6 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = MusicHUD/MainMenu.xib; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 		C99F274117559B8B00720C95 /* MusicHUD */ = {
 			isa = PBXGroup;
 			children = (
+				C9E1BCAD175C507C0004E4D6 /* MainMenu.xib */,
 				C942C4FF175943C1004C438E /* Spotify.h */,
 				C9BBCF481756BDF7007CFEED /* Sonora.h */,
 				C99F273017558E9B00720C95 /* iTunes.h */,
@@ -184,6 +187,7 @@
 			files = (
 				C99F274617559B8B00720C95 /* InfoPlist.strings in Resources */,
 				C99F274C17559B8B00720C95 /* Credits.rtf in Resources */,
+				C9E1BCAE175C507C0004E4D6 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

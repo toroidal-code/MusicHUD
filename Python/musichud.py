@@ -4,7 +4,7 @@ import threading
 from PySide.QtCore import *
 from PySide.QtGui import *
 from copy import deepcopy
-
+from PIL import Image
 
 filename = "album.png"
 
@@ -42,7 +42,6 @@ class Server(object):
         if (albumArt):
             filename = 'album.' + albumArt.filename.split('.')[-1]
             savedFile = open(filename, 'wb')
-            print('writing file: ' + albumArt.filename)
             savedFile.write(albumArt.file.read())
             savedFile.close()
             out %= (title, album, artist, albumArt.filename,
@@ -83,18 +82,19 @@ class MetroView(QGraphicsView):
         self.thread = MainThread()
         self.connect(self.thread, SIGNAL("dataReady()"), self.update)
         self.thread.start()
+        self.setInteractive(False)
         self.initUI()
 
     def initUI(self):
         # set blackish background
 
-        self.albumart = QPixmap(filename).scaledToHeight(self.scene().sceneRect().height())
+        self.albumart = QPixmap(filename).scaledToHeight(self.scene().sceneRect().height(), mode=Qt.SmoothTransformation)
         self.setWindowFlags(Qt.FramelessWindowHint)
 
         self.title = QGraphicsTextItem()
         self.title.setAcceptHoverEvents(False)
         self.title.setFont(Style().title_font(self.scene().sceneRect().height()))
-        self.title.setPlainText("It's Alright")
+        self.title.setPlainText("None")
         self.title.setDefaultTextColor(Style.ui_text_color)
         self.title.setPos(20, self.scene().sceneRect().height() - self.scene().sceneRect().height() * .20)
         self.scene().addItem(self.title)
@@ -102,16 +102,13 @@ class MetroView(QGraphicsView):
         self.album = QGraphicsTextItem()
         self.album.setAcceptHoverEvents(False)
         self.album.setFont(Style().body_font(self.scene().sceneRect().height()))
-        self.album.setPlainText("%s - %s" % ('Matt and Kim', 'Lightning'))
+        self.album.setPlainText("%s - %s" % ('None', 'None'))
         self.album.setDefaultTextColor(Style.ui_text_color)
         self.album.setPos(20, self.scene().sceneRect().height() - self.scene().sceneRect().height() * .09)
         self.scene().addItem(self.album)
 
     def updateImage(self):
-        self.albumart = QPixmap(filename).scaledToHeight(self.scene().sceneRect().height())
-        #color = colorz(filename, 2)[1]
-        #self.title.setDefaultTextColor(color)
-        #self.album.setDefaultTextColor(color)
+        self.albumart = QPixmap(filename).scaledToHeight(self.scene().sceneRect().height(), mode=Qt.SmoothTransformation)
 
     def updateArtistAlbum(self, artist, album):
         self.album.setPlainText("%s - %s" % (artist, album))
@@ -137,7 +134,7 @@ class MetroView(QGraphicsView):
         self.repaint()
 
 app = QApplication(sys.argv)
-view_rect = QRect(100, 100, 600, 600)
+view_rect = QRect(100, 100, 500, 500)
 
 scene = QGraphicsScene()
 scene.setSceneRect(0.0, 0.0, view_rect.width(), view_rect.height())

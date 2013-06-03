@@ -21,7 +21,8 @@
 + (void) sendRequestWithTitle:(NSString *)title withArtist:(NSString *)artist withAlbum:(NSString *)album withAlbumArt:(NSData *)albumArt{
 
     // Create the URL request
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://localhost:8080/"]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/", [[NSUserDefaults standardUserDefaults] objectForKey:@"host"]]];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
 
     [request setHTTPMethod:@"POST"];
 

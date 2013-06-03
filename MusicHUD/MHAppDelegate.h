@@ -15,8 +15,10 @@
     MHSpotifyListener * _spotifyListener;
     MHiTunesListener * _iTunesListener;
     MHSonoraListener * _sonoraListener;
+    NSStatusItem * statusItem;
 }
 @property (nonatomic, retain) MHSonoraListener* sonoraListener;
 @property (nonatomic, retain) MHiTunesListener* iTunesListener;
 @property (nonatomic, retain) MHSpotifyListener* spotifyListener;
+@property (assign) IBOutlet NSMenu *statusMenu;
 @end
