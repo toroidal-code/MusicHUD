@@ -4,12 +4,13 @@ import threading
 from PySide.QtCore import *
 from PySide.QtGui import *
 from copy import deepcopy
-from PIL import Image
+
 
 filename = "album.png"
 
 #cherrypy.config.update({'server.thread_pool': 0})
-
+cherrypy.config.update(
+    {'server.socket_host': '0.0.0.0'})
 
 class Style:
     '''Style constants'''
@@ -90,6 +91,8 @@ class MetroView(QGraphicsView):
 
         self.albumart = QPixmap(filename).scaledToHeight(self.scene().sceneRect().height(), mode=Qt.SmoothTransformation)
         self.setWindowFlags(Qt.FramelessWindowHint)
+        self.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
 
         self.title = QGraphicsTextItem()
         self.title.setAcceptHoverEvents(False)
@@ -117,7 +120,8 @@ class MetroView(QGraphicsView):
         self.title.setPlainText(title)
 
     def paintEvent(self, event):
-        painter = QPainter(self)
+        painter = QPainter()
+        painter.begin(self.viewport())
         painter.drawTiledPixmap(self.rect(), self.albumart)
         painter.setBrush(Style.background_color)
         painter.setPen(QPen(Style.background_color, 0, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
